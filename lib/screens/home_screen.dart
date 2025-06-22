@@ -1,0 +1,34 @@
+import 'package:flutter/material.dart';
+import 'cat_tab.dart';
+import 'dog_tab.dart';
+import 'favorites_tab.dart';
+
+class HomeScreen extends StatelessWidget {
+  const HomeScreen({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return DefaultTabController(
+      length: 3,
+      child: Scaffold(
+        appBar: AppBar(
+          title: const Text('Cat & Dog Palette 🐱🐶'),
+          bottom: const TabBar(
+            tabs: [
+              Tab(text: 'Коты 🐱'),
+              Tab(text: 'Собаки 🐶'),
+              Tab(text: 'Избранное ⭐'),
+            ],
+          ),
+        ),
+        body: const TabBarView(
+          children: [
+            CatTab(),
+            DogTab(),
+            FavoritesTab(),
+          ],
+        ),
+      ),
+    );
+  }
+}
