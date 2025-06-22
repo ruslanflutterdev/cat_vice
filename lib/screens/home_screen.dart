@@ -1,3 +1,4 @@
+import 'package:cat_vice/routes/app_routes.dart';
 import 'package:flutter/material.dart';
 import 'cat_tab.dart';
 import 'dog_tab.dart';
@@ -12,8 +13,16 @@ class HomeScreen extends StatelessWidget {
       length: 3,
       child: Scaffold(
         appBar: AppBar(
-          title: const Text('Cat & Dog Palette 🐱🐶'),
-          bottom: const TabBar(
+          title: Text('Cat & Dog Palette 🐱🐶'),
+          actions: [
+            IconButton(
+              onPressed: () {
+                Navigator.pushNamed(context, AppRoutes.settings);
+              },
+              icon: Icon(Icons.settings),
+            ),
+          ],
+          bottom: TabBar(
             tabs: [
               Tab(text: 'Коты 🐱'),
               Tab(text: 'Собаки 🐶'),
@@ -21,13 +30,7 @@ class HomeScreen extends StatelessWidget {
             ],
           ),
         ),
-        body: const TabBarView(
-          children: [
-            CatTab(),
-            DogTab(),
-            FavoritesTab(),
-          ],
-        ),
+        body: TabBarView(children: [CatTab(), DogTab(), FavoritesTab()]),
       ),
     );
   }
